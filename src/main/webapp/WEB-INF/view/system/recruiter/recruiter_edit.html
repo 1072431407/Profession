@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="主键" value="${item.id}" underline="true" disabled="true" />
+                            <#input id="name" name="姓名" value="${item.name}" underline="true" disabled="true" />
+                            <#input id="sex" name="性别" value="${sexName}" underline="true" disabled="true" />
+                            <#input id="phonenum" name="电话号码" value="${item.phonenum}" underline="true" disabled="true" />
+                            <#input id="email" name="Email" value="${item.email}" underline="true" disabled="true" />
+                            <!-- <#input id="idcardimage" name="身份证图片" value="${item.idcardimage}" underline="true"/> -->
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold">身份证图片</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<image src="${item.idcardimage}" style="width:100px;height:100px"/></p>
+                            <#input id="companyname" name="公司名称" value="${item.companyname}" disabled="true" />
+                			<!-- <#input id="status" name="状态" value="${item.status}" underline="true"/> -->
+                			<input type="hidden" id="statusValue" value="${item.status}">
+                            <#select id="status" name="状态" underline="true">
+								<option value="1">启用</option>
+								<option value="2">禁用</option>
+							</#select>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="companyplace" name="公司地址" value="${item.companyplace}" underline="true" disabled="true" />
+                            <#input id="companyinfo" name="公司介绍" value="${item.companyinfo}" underline="true" disabled="true" style="height:200px" />
+                            <!-- <#input id="companyimage" name="营业执照图片" value="${item.companyimage}" underline="true" /> -->
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold">营业执照图片</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<image src="${item.companyimage}" style="width:100px;height:100px"/></p>
+                            <#input id="user" name="用户ID" value="${item.user}" underline="true" disabled="true" />
+                            <#input id="createtime" name="创建时间" value="${item.createtime}" underline="true" disabled="true" />
+                            <!-- <#input id="isdeleted" name="删除标志" value="${item.isdeleted}" />-->
+                            <input type="hidden" id="isdeletedValue" value="${item.isdeleted}">
+                            <#select id="isdeleted" name="删除标记" underline="true">
+								<option value="1">启用</option>
+								<option value="3">已删除</option>
+							</#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="RecruiterInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="RecruiterInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/recruiter/recruiter_info.js"></script>
+@}

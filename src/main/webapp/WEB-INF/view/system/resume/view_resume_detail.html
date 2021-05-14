@@ -1,0 +1,29 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="name" name="姓名" value="${resume.name}" underline="true"  readonly="readonly" />
+                    <#dictSelector id="sex" name ="sex" code="sys_sex"  label="性别"  underline="true"  value="" disabled="true"/>
+                            <#input id="birthday" name="出生年月" value="${resume.birthday}" underline="true"  readonly="readonly" />
+                            <#input id="phonenum" name="电话号码" value="${resume.phonenum}" underline="true"   readonly="readonly"/>
+                            <#input id="email" name="Email" value="${resume.email}" underline="true"  readonly="readonly" />
+                            <#input id="schoolname" name="学校名称" value="${resume.schoolname}" underline="true" readonly="readonly" />
+                            <#input id="time" name="入学时间到毕业时间" value="${resume.time}" underline="true" readonly="readonly" />
+                            <#input id="education" name="学历" value="${resume.education}" readonly="readonly" />
+                </div>
+
+                <div class="col-sm-6">
+                			<#input id="major" name="专业" value="${resume.major}" underline="true"   readonly="readonly"/>
+                            <#input id="experience" name="工作经验" value="${resume.experience}" underline="true"  style="height:200px" readonly="readonly" />
+                            <#input id="jobintension" name="求职意向" value="${resume.jobintension}" underline="true"  readonly="readonly"/>
+                    <#dictSelector id="jobtype" name ="jobtype" code="job_type"  label="求职类型"  underline="true"  value="${resume.jobtype}" disabled="true" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@}

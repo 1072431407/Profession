@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.UserPositionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.UserPosition">
+        <id column="id" property="id" />
+        <result column="user" property="user" />
+        <result column="intention" property="intention" />
+        <result column="resume" property="resume" />
+        <result column="username" property="username"/>
+        <result column="status" property="status" />
+        <result column="createtime" property="createtime" />
+        <result column="isdeleted" property="isdeleted" />
+        <result column="position" property="position" jdbcType="BLOB"/>
+        <result column="position_id" property="positionId" />
+        <!--<association property="position" column="position" javaType="cn.stylefeng.guns.modular.system.model.Position">
+            <id column="id" property="id" />
+            <result column="name" property="name" />
+            <result column="type" property="type" />
+            <result column="place" property="place"/>
+            <result column="information" property="information"/>
+            <result column="personnum" property="personnum"/>
+            <result column="salary" property="salary"/>
+            <result column="contact" property="contact"/>
+            <result column="category" property="category"/>
+        </association>-->
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user, position, resume, status, createtime, isdeleted
+    </sql>
+
+    <insert id="userPositionsave" parameterType="cn.stylefeng.guns.modular.system.model.UserPosition" useGeneratedKeys="true" >
+        insert into sys_user_position(id,user,username,intention,resume,status,position,createtime,isdeleted,position_id) values(null,#{user},#{username},#{intention},#{resume},#{status},#{position,jdbcType=BLOB},#{createtime},#{isdeleted},#{positionId})
+    </insert>
+
+    <select id="findApplyByid" parameterType="Integer" resultType="map">
+        select * from sys_user_position
+        <if test="id != null and id != ''">
+            where user=#{id}
+        </if>
+    </select>
+    <select id="findApplyByPid" parameterType="Integer" resultType="map">
+        select * from sys_user_position where position_id=#{id} and isdeleted=1
+    </select>
+
+    <update id="updateStatus" parameterType="map">
+        update sys_user_position set status=#{status} where id=#{id}
+    </update>
+</mapper>

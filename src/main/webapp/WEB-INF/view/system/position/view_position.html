@@ -1,0 +1,25 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>兼职任务管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="hidden-xs" id="PositionTableToolbar" role="group">
+                            <#button name="已审阅" icon="fa-plus" clickFun="Review()"/>
+                            <#button name="简历详情" icon="fa-edit" clickFun="ResumeDetail()" space="true"/>
+                        </div>
+
+                        <input type="hidden" id="view-pid" value="${pid}"/>
+                        <#table id="ViewPositionTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/user_position/view_position.js"></script>
+@}

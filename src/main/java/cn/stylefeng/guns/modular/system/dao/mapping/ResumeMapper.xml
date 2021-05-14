@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.ResumeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Resume">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="birthday" property="birthday" />
+        <result column="phonenum" property="phonenum" />
+        <result column="email" property="email" />
+        <result column="schoolname" property="schoolname" />
+        <result column="time" property="time" />
+        <result column="education" property="education" />
+        <result column="major" property="major" />
+        <result column="experience" property="experience" />
+        <result column="jobintension" property="jobintension" />
+        <result column="jobtype" property="jobtype" />
+        <result column="cardimage" property="cardimage" />
+        <result column="user" property="user" />
+        <result column="statue" property="statue" />
+        <result column="createtime" property="createtime" />
+        <result column="isdeleted" property="isdeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, sex, birthday, phonenum, email, schoolname, time, education, major, experience, jobintension, jobtype, cardimage, user, statue, createtime, isdeleted
+    </sql>
+    
+    <select id="selectResumes" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from sys_resume
+		<if test="condition != null">
+			where name like CONCAT('%',#{condition},'%')
+		</if>
+	</select>
+
+    <select id="selectResumesById" resultType="map" parameterType="Map">
+        select
+        <include refid="Base_Column_List" />
+        from sys_resume where user=#{userId}
+    </select>
+
+</mapper>

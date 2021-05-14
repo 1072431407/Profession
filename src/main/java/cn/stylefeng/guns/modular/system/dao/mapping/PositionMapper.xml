@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.PositionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Position">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="type" property="type" />
+        <result column="personnum" property="personnum" />
+        <result column="place" property="place" />
+        <result column="information" property="information" />
+        <result column="salary" property="salary" />
+        <result column="contact" property="contact" />
+        <result column="category" property="category" />
+        <result column="user" property="user" />
+        <result column="createtime" property="createtime" />
+        <result column="isdeleted" property="isdeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, type, personnum, place, information, salary, contact, category, user, createtime, isdeleted
+    </sql>
+    
+    <select id="selectPositions" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from sys_position
+		<if test="condition != null">
+			where name like CONCAT('%',#{condition},'%')
+		</if>
+	</select>
+
+</mapper>
