@@ -1,0 +1,6 @@
+Maven3.6 or 3.5
+Mysql 5.X
+JDK 1.8
+
+admin
+123456

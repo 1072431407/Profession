@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="name" name="姓名" value="" underline="true"  />
+                    <#dictSelector id="sex" name ="sex" code="sys_sex"  label="性别"  underline="true"  value="" />
+                            <#input id="birthday" name="出生年月" value="" underline="true" type="text" />
+                            <#input id="phonenum" name="电话号码" value="" underline="true"/>
+                            <#input id="email" name="Email" value="" underline="true"  />
+                            <#input id="schoolname" name="学校名称" value="" underline="true" />
+                            <#input id="time" name="入学时间到毕业时间" value="" underline="true" />
+                            <#input id="education" name="学历" value="" />
+                </div>
+                <div class="col-sm-6">
+                			<#input id="major" name="专业" value="" underline="true"  />
+                            <#input id="experience" name="工作经验" value="" underline="true"  style="height:200px" />
+                            <#input id="jobintension" name="求职意向" value="" underline="true"  />
+                    <#dictSelector id="jobtype" name ="jobtype" code="job_type"  label="求职类型"  underline="true"  value="" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ResumeInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ResumeInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/resume/resume_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#birthday'
+    });
+</script>
+@}

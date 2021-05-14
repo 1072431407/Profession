@@ -1,0 +1,50 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="title" name="标题" value="${item.title}" underline="true"/>
+                            <#input id="newsurl" name="链接" value="${item.newsurl}" underline="true"/>
+                            <!-- <#input id="content" name="内容" value="${item.content}" /> -->
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="createtime" name="创建时间" value="${item.createtime}" underline="true" disabled="true"/>
+                            <!-- <#input id="isdeleted" name="删除标志" value="${item.isdeleted}" /> -->
+                            <input type="hidden" id="isdeletedValue" value="${item.isdeleted}">
+                            <#select id="isdeleted" name="删除标记" underline="true">
+								<option value="1">启用</option>
+								<option value="3">已删除</option>
+							</#select>
+                </div>
+            </div>
+            <input type="hidden" id="id" value="${item.id}">
+            <input type="hidden" id="contentVal" value='${item.content}'>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">内容</label>
+                        <div class="col-sm-11">
+                            <div id="editor" class="editorHeight">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="NewsInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="NewsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+<script src="${ctxPath}/static/modular/system/news/news_info.js"></script>
+@}

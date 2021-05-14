@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="主键" value="${item.id}" underline="true"/>
+                            <#input id="title" name="标题" value="${item.title}" underline="true"/>
+                            <#input id="content" name="内容" value="${item.content}" underline="true"/>
+                            <#input id="user" name="评价者ID" value="${item.user}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="position" name="职位" value="${item.position}" underline="true"/>
+                            <#input id="recruiter" name="招聘者资料ID" value="${item.recruiter}" underline="true"/>
+                            <#input id="createtime" name="创建时间" value="${item.createtime}" underline="true"/>
+                            <#input id="isdeleted" name="删除标志" value="${item.isdeleted}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="EvaluateInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="EvaluateInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/evaluate/evaluate_info.js"></script>
+@}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.NewsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.News">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="newsurl" property="newsurl" />
+        <result column="createtime" property="createtime" />
+        <result column="isdeleted" property="isdeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, title, content, newsurl, createtime, isdeleted
+    </sql>
+    
+ 	<select id="selectNews" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from sys_news
+		<if test="condition != null">
+			where title like CONCAT('%',#{condition},'%')
+		</if>
+	</select>
+</mapper>

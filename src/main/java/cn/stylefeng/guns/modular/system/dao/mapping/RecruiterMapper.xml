@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.RecruiterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Recruiter">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="phonenum" property="phonenum" />
+        <result column="email" property="email" />
+        <result column="idcardimage" property="idcardimage" />
+        <result column="companyname" property="companyname" />
+        <result column="companyplace" property="companyplace" />
+        <result column="companyinfo" property="companyinfo" />
+        <result column="companyimage" property="companyimage" />
+        <result column="status" property="status" />
+        <result column="user" property="user" />
+        <result column="createtime" property="createtime" />
+        <result column="isdeleted" property="isdeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, sex, phonenum, email, idcardimage, companyname, companyplace, companyinfo, companyimage, status, user, createtime, isdeleted
+    </sql>
+	<select id="selectRecruiters" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from sys_recruiter where 1=1
+        <if test="condition != null">
+			and name like CONCAT('%',#{condition},'%')
+		</if>
+        and isdeleted=1 and status=1
+	</select>
+</mapper>

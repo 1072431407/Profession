@@ -1,0 +1,87 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="主键" value="${item.id}" underline="true" disabled="true"/>
+                            <!-- <#input id="imageurl" name="图片地址" value="${item.imageurl}" />-->
+                			<input type="hidden" id="imageUrlValue">
+			                <div class="col-sm-6">
+			             			<div class="layui-upload">
+										  <button type="button" class="layui-btn" id="test1">上传图片</button>
+										  <div class="layui-upload-list">
+										    <img class="layui-upload-img" id="imageurl" src="${item.imageurl}">
+										    <p id="demoText"></p>
+										 </div>
+									</div>
+			                </div>
+                </div>
+
+                <div class="col-sm-6">
+                			<#input id="title" name="标题" value="${item.title}" underline="true"/>
+                            <!-- <#input id="status" name="状态" value="${item.status}" underline="true"/> -->
+                            <input type="hidden" id="statusValue" value="${item.status}">
+                            <#select id="status" name="状态" underline="true">
+								<option value="1">启用</option>
+								<option value="2">禁用</option>
+							</#select>
+                            
+                            <#input id="createtime" name="创建时间" value="${item.createtime}" underline="true" disabled="true"/>
+                            <input type="hidden" id="isdeletedValue" value="${item.isdeleted}">
+                            <#select id="isdeleted" name="删除标记" underline="true">
+								<option value="1">启用</option>
+								<option value="3">已删除</option>
+							</#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="AdvertisementInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="AdvertisementInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/layui/layui.js" charset="utf-8"></script>
+<script src="${ctxPath}/static/modular/system/advertisement/advertisement_info.js"></script>
+<script>
+layui.use('upload', function(){
+	  var $ = layui.jquery
+	  ,upload = layui.upload;
+	  
+	  //普通图片上传
+	  var uploadInst = upload.render({
+	    elem: '#test1'
+	    ,url: '/utils/upload'
+	    ,before: function(obj){
+	      //预读本地文件示例，不支持ie8
+	      obj.preview(function(index, file, result){
+	        $('#imageurl').attr('src', result); //图片链接（base64）
+	      });
+	    }
+	    ,done: function(res){
+	      //如果上传失败
+	      if(res.code > 0){
+	        return layer.msg('上传失败');
+	      } else {
+	    	  $("#imageUrlValue").val(res.imageUrl)
+	      }
+	      //上传成功
+	    }
+	    ,error: function(){
+	      //演示失败状态，并实现重传
+	      var demoText = $('#demoText');
+	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+	      demoText.find('.demo-reload').on('click', function(){
+	        uploadInst.upload();
+	      });
+	    }
+	  });
+});
+</script>
+@}
