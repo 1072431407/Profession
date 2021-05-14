@@ -1,8 +1,6 @@
-��ְ����
- Maven3.6��3.5
- Mysql 5.X  ����ʹ��8.0 
- JDK 1.8 11��13��֧��
- �������ݿ���� navicat����syslog
+Maven3.6 or 3.5
+Mysql 5.X
+JDK 1.8
 
 admin
 123456
